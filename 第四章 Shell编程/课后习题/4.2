@@ -1,0 +1,18 @@
+#!/bin/bash
+#addusers
+echo "-----add 9 users-----"
+echo "please input a string:"
+read user
+for i in {1..9};do
+	username=$user$i
+	if useradd $username > /dev/null;then 
+		echo "$username" | passwd --stdin $username
+		if [ $? -eg 0 ];then
+			echo "add $username successful"
+		else
+			echo "$username added, change password failure "
+		fi
+	else 
+		echo "add $username failure "
+	fi
+done

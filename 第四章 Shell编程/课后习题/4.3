@@ -1,0 +1,15 @@
+#!/bin/bash
+#delusers
+echo "-----del 9 users-----"
+echo "please input a string:"
+read user 
+for i in {1..9};do
+	username=$user$i
+	userdel -r $username
+	if [ $? -eg 0 ];then
+		echo "del $username successful"
+	else
+		echo "del $username failure"
+	fi
+done 
+exit
